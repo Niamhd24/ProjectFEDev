@@ -1,3 +1,27 @@
+---
+import Footer from '/Users/niamh.davis/startfromscratch/src/Components/Footer.astro';
+import Header from '/Users/niamh.davis/startfromscratch/src/Components/Header.astro';
+import '/Users/niamh.davis/startfromscratch/src/pages/Styles/global.css'
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase"; 
+---
 
 <html lang="en">
 	<head>
@@ -5,21 +29,49 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
+        <style define:vars={{skillColor}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+}
+          </style>
 	</head>
 	<body>
-        <a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/genre/">Genre</a> 
+        <Header />
 
 <h1>About Me</h1>
 <h2>... and my new Astro site!</h2>
 		<h1>My Astro site change 1 </h1>
-        <h1>About me</h1>
+        <h1>{pageTitle}</h1>
         <h2>.... and my new astro site!</h2>
 
         <p>I am working through this tutorial to the the craic, this is the second page</p>
 
         <p>This site will update as I complete more of the tutorial</p>
-	</body>
+        <p>Here are a few facts about me:</p>
+<ul>
+  <li>My name is {identity.firstName}.</li>
+  <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+  {identity.hobbies.length >= 2 &&
+    <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+  }
+</ul>
+<p>My skills are:</p>
+<ul>
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
+</ul>
+
+{happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+<Footer />	
+</body>
 </html>

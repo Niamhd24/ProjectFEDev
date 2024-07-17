@@ -1,18 +1,30 @@
+---
+import Footer from '/Users/niamh.davis/startfromscratch/src/Components/Footer.astro';
+import Header from '/Users/niamh.davis/startfromscratch/src/Components/Header.astro';
+import '/Users/niamh.davis/startfromscratch/src/pages/Styles/global.css'
+const pageTitle = "Movie Genres";
+---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/genre/">Genre</a> 
+		<Header />
 
-<h1>Genre of Movies</h1>
+
+<h1>{pageTitle}</h1>
 		<h1>We don't know what is going in here yet</h1>
         <p>This is where we will continue to do stuff</p>
+        <ul>
+            <li><a href="/posts/post-1"> post 1 </a></li>
+            <li><a href="/posts/post-2/">Post 2</a></li>
+      <li><a href="/posts/post-3/">Post 3</a></li>
+        </ul>
+        <Footer />
 	</body>
 </html>
